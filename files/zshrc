@@ -4,6 +4,12 @@
 
 source ~/.config/zsh/*.zsh
 
+###################
+# Standardization #
+###################
+
+export TERM=screen-256color
+
 ########
 # Brew #
 ########
