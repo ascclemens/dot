@@ -131,7 +131,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 alias airvpn-kill="ps ax | grep -i airvpn | cut -f 1 -d ' ' | sed -n 2,3p | xargs kill -9"
 alias battery="pmset -g batt"
-alias git=hub
+[[ -e $(which hub) ]] && alias git=hub
 alias ka="k -A"
 alias ls="ls -Gp"
 alias lsa="ls -A"
