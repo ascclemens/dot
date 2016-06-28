@@ -8,11 +8,13 @@ source ~/.config/zsh/*.zsh
 # Brew #
 ########
 
-export PATH=/usr/local/sbin:/usr/local/bin:$PATH
-if which jenv > /dev/null; then eval "$(jenv init -)"; fi
-if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
-. `brew --prefix`/etc/profile.d/z.sh
-eval "$(thefuck --alias)"
+if [[ -e $(which brew) ]]; then
+  export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+  if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+  if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+  . `brew --prefix`/etc/profile.d/z.sh
+  eval "$(thefuck --alias)"
+fi
 
 ###########
 # Antigen #
@@ -117,7 +119,7 @@ fi
 # Globals #
 ###########
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+[[ -e /usr/libexec/java_home ]] && export JAVA_HOME=$(/usr/libexec/java_home)
 export EDITOR="reattach-to-user-namespace subl -wn"
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=`tty`
