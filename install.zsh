@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 force="false"
 remove_old="false"
 while getopts fr opt; do
@@ -12,7 +14,7 @@ done
 
 for file in `ls files/*`; do
   name=`basename $file`
-  if "$remove_old" == "true"; then
+  if [[ "$remove_old" == "true" ]]; then
     if [[ -e ~/.${name}_old ]]; then
       rm -f ~/.${name}_old
       echo "Removed ~/.${name}_old."
