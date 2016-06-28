@@ -8,6 +8,7 @@ source ~/.config/zsh/*.zsh
 # Brew #
 ########
 
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 . `brew --prefix`/etc/profile.d/z.sh
@@ -117,7 +118,6 @@ fi
 ###########
 
 export JAVA_HOME=$(/usr/libexec/java_home)
-export PATH=/usr/local/sbin:/usr/local/bin:$PATH
 export EDITOR="reattach-to-user-namespace subl -wn"
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=`tty`
@@ -293,4 +293,4 @@ export PATH=$PATH:~/.cargo/bin
 ###########
 
 # Sort and clean $PATH. This should always remain at the end of the file.
-export PATH=$(path_sort)
+export PATH=$(path_sort --homebrew)
