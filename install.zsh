@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 force="false"
 remove_old="false"
@@ -12,7 +12,7 @@ while getopts fr opt; do
   esac
 done
 
-for file in `ls files/*`; do
+for file in files/*; do
   name=`basename $file`
   if [[ "$remove_old" == "true" ]]; then
     if [[ -e ~/.${name}_old ]]; then
