@@ -19,6 +19,8 @@ if [[ -e $(which brew) ]]; then
   if which jenv > /dev/null; then eval "$(jenv init -)"; fi
   if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
   eval "$(thefuck --alias)"
+  export OPENSSL_INCLUDE_DIR="$(brew --prefix openssl)/include"
+  export OPENSSL_LIB_DIR="$(brew --prefix openssl)/lib"
 fi
 
 ###########
