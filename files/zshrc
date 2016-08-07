@@ -176,6 +176,14 @@ mvln() {
   ln -s $(realpath $2) $(realpath $1);
 }
 
+sstrip() {
+  if [[ $(uname) == 'Darwin' ]]; then
+    strip -S "$*" && strip "$*";
+  else
+    strip -s "$*" && strip "$*";
+  fi
+}
+
 movie() {
   geeknote show "$1" | tr '\n' '|' | cut -d'|' -f7- | tr '|' '\n' | sed '/^$/d' | sed '/^\* \[x/d' | gshuf -n 1
 }
