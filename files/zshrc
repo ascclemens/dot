@@ -4,12 +4,6 @@
 
 source ~/.config/zsh/*.zsh
 
-###################
-# Standardization #
-###################
-
-export TERM=screen-256color
-
 ########
 # Brew #
 ########
@@ -127,7 +121,7 @@ fi
 ###########
 
 [[ -e /usr/libexec/java_home ]] && export JAVA_HOME=$(/usr/libexec/java_home)
-export EDITOR="reattach-to-user-namespace subl -wn"
+export EDITOR="code -wn"
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=`tty`
 export PATH="$PATH:$HOME/.rvm/bin"
@@ -146,6 +140,9 @@ alias mux=tmuxinator
 alias pseudo=sudo
 alias subl="reattach-to-user-namespace subl"
 alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
+alias bytes="gnumfmt --to=iec-i --suffix=B"
+alias reset_title='printf "\e]0;$(hostname)\a"'
+alias mpsyt='mpsyt; reset_title'
 
 # Added by termtile (https://github.com/apaszke/termtile)
 alias mwul='osascript ~/.termtile/tile.scpt up left'
@@ -304,6 +301,13 @@ export SDKMAN_DIR="/Users/kyleclemens/.sdkman"
 ########
 
 export PATH=$PATH:~/.cargo/bin
+export RUST_SRC_PATH=~/.multirust/toolchains/nightly-x86_64-apple-darwin/lib/rustlib/src/rust/src
+
+############
+# Composer #
+############
+
+export PATH=$PATH:~/.composer/vendor/bin
 
 ###########
 # Cleanup #
