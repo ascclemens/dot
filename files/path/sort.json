@@ -4,6 +4,8 @@
       "paths": [
         {"exact": "/usr/local/bin"},
         {"exact": "/usr/local/sbin"},
+        {"contains": ".local"},
+        {"contains": ".cargo"},
         {"contains": ".rvm"},
         {"default": true},
         {"exact": "/bin"},
