@@ -1,5 +1,7 @@
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# add cargo
 export PATH=$PATH:~/.cargo/bin
+
+# sort path again
 [[ -e $(which path) ]] && export PATH=$(path sort -s ~/.path/sort.json)
 
 # Start keychain as our ssh-agent, using AddKeysToAgent in ~/.ssh/config
