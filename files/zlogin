@@ -1,8 +1,0 @@
-# add cargo
-export PATH=$PATH:~/.cargo/bin
-
-# sort path again
-[[ -e $(which path) ]] && export PATH=$(path sort -s ~/.path/sort.json)
-
-# Start keychain as our ssh-agent, using AddKeysToAgent in ~/.ssh/config
-[[ -e $(which keychain) ]] && eval $(keychain --eval --quiet --noask --agents ssh)
