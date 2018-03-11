@@ -2,12 +2,11 @@
 # TERM #
 ########
 
-# Yes, everything about this is bad. However, it's basically the only TERM that gets everyone to
-# play together nicely. iTerm -> tmux -> ssh/mosh -> tmux maintaining proper keybinds is a miracle.
-# So the way this works is that we use xterm-256color everywhere EXCEPT tmux. tmux requires
-# screen-256color.
-if [[ $TMUX != "" ]]; then
-  export TERM=screen-256color
-else
+# Basically, I give up. xterm-256color should work, in theory, but it just doesn't. In fact, it only
+# works in iTerm2 *out of* tmux. Inside tmux or via ssh, screen-256color is required. I don't even
+# care at this point. It's been hours. The TERM variable is unbelievable.
+if [[ $TMUX == "" && $(uname) == "Darwin" ]]; then
   export TERM=xterm-256color
+else
+  export TERM=screen-256color
 fi
