@@ -3,5 +3,8 @@
 ########
 
 # add ~/.local/bin
-export PATH=$PATH:~/.local/bin
-[ -f /Users/kyleclemens/.travis/travis.sh ] && source /Users/kyleclemens/.travis/travis.sh
+if [[ -d ~/.local/bin ]]; then
+  export PATH=$PATH:~/.local/bin
+fi
+
+export PATH=$PATH:/usr/local/sbin:/usr/local/bin
