@@ -13,6 +13,12 @@ if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(which reattach-to-user
   alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
 fi
 
-alias ls="ls -Gp"
-alias lsa="ls -A"
+if [[ -x $(which exa) ]]; then
+  alias ls="exa"
+  alias lsa="ls -a"
+else
+  alias ls="ls -Gp"
+  alias lsa="ls -A"
+fi
+
 alias reset_title='printf "\e]0;$(hostname)\a"'
