@@ -2,11 +2,13 @@
 # Prompts #
 ###########
 
-export PROMPT="$(~/.prompt/prompt PROMPT)"
-export RPROMPT="$(~/.prompt/prompt RPROMPT)"
+if [[ -x ~/.prompt/prompt ]]; then
+  export PROMPT="$(~/.prompt/prompt PROMPT)"
+  export RPROMPT="$(~/.prompt/prompt RPROMPT)"
+fi
 
 function rust_prompt_info {
-  if [[ -e ./Cargo.toml || -e ./Cargo.lock && -e $(which rustc) ]]; then
+  if [[ -e ./Cargo.toml || -e ./Cargo.lock && -x $(which rustc) ]]; then
     echo "$(rustc --version | cut -d ' ' -f 2) "
   fi
 }

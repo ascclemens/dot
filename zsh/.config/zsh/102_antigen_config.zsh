@@ -2,7 +2,7 @@
 # Antigen #
 ###########
 
-if [[ ! -e ~/.config/zsh/antigen.zsh && -e $(which curl) ]]; then
+if [[ ! -e ~/.config/zsh/antigen.zsh && -x $(which curl) ]]; then
   echo 'Downloading antigen...'
   curl -L git.io/antigen > ~/.config/zsh/antigen.zsh
 fi
