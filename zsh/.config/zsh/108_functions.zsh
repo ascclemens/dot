@@ -14,15 +14,6 @@ mvln() {
   ln -s $(realpath $2) $(realpath $1);
 }
 
-# mostly unnecessary double strip
-sstrip() {
-  if [[ $(uname) == 'Darwin' ]]; then
-    strip -S "$*" && strip "$*";
-  else
-    strip -s "$*" && strip "$*";
-  fi
-}
-
 # undollar
 \$() { $@ }
 
