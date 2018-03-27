@@ -8,12 +8,6 @@ mkdircd() {
   cd "$*";
 }
 
-# move a file and leave a symbolic link in its wake
-mvln() {
-  mv $1 $2
-  ln -s $(realpath $2) $(realpath $1);
-}
-
 # undollar
 \$() { $@ }
 
