@@ -13,4 +13,4 @@ fi
 [[ -x /usr/libexec/java_home ]] && export JAVA_HOME=$(/usr/libexec/java_home)
 
 export MONO_GAC_PREFIX="/usr/local"
-export GPG_TTY=`tty`
+export GPG_TTY=$(tty)
