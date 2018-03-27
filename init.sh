@@ -23,6 +23,7 @@ __box_init() {
     else
       echo 'not enough sudo privileges'
       echo 'cowardly refusing to continue'
+      return
     fi
   elif [ "$(whoami)" = "root" ]; then
     local sudo=""
