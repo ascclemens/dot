@@ -26,7 +26,7 @@ function git_status {
 }
 
 function git_spark {
-  if [[ "x$(git status 2> /dev/null)" != "x" ]]; then
+  if [[ -x $(which git-freq) && $(git status 2>/dev/null) != "" ]]; then
     echo " $(git freq $(date '+%Y-%m-%d') -7 | spark)"
   fi
 }
