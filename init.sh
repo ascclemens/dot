@@ -59,7 +59,7 @@ __box_init() {
     fi
   else
     # no point in using sudo, as it will require the same password
-    chsh -s "$(which zsh)"
+    chsh -s "$(command -v zsh)"
   fi
 
   echo 'downloading dot files...'
@@ -100,7 +100,7 @@ __box_init() {
   stow path
 
   printf 'install rust? [y/N] '
-  read -r install
+  read -r install <&2
   if [ "$install" = 'y' ] || [ "$install" = 'Y' ]; then
     curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain nightly --no-modify-path -y
   fi
