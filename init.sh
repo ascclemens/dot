@@ -8,8 +8,6 @@ __box_init() {
 
   if [ "$(uname)" = 'Darwin' ]; then
     darwin=1
-  else
-    darwin=0
   fi
 
   if [ -x "$(command -v sudo)" ]; then
