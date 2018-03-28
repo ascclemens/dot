@@ -5,19 +5,21 @@ __box_init() {
 
   local nopasswd=0
   local darwin=0
+  local sudo=''
+  local no_sudo=0
 
   if [ "$(uname)" = 'Darwin' ]; then
     darwin=1
   fi
 
   if [ -x "$(command -v sudo)" ]; then
-    local cap=''
+    local cap
     cap="$(sudo -l)"
     if echo "$cap" | grep NOPASSWD; then
       nopasswd=1
-      local sudo="sudo"
+      sudo="sudo"
     elif echo "$cap" | grep ALL; then
-      local sudo="sudo"
+      sudo="sudo"
     else
       echo 'not enough sudo privileges'
       echo 'cowardly refusing to continue'
@@ -25,23 +27,30 @@ __box_init() {
     fi
   elif [ "$(whoami)" = "root" ]; then
     local sudo=""
+  elif [ "$INIT_NO_SUDO" != "" ]; then
+    echo 'no sudo found and not root'
+    echo 'going ahead without sudo'
+    echo 'things may break'
+    no_sudo=1
   else
     echo 'no sudo found and not root'
     echo 'cowardly refusing to continue'
     return
   fi
 
-  echo 'updating apt...'
-  $sudo apt-get update
+  if [ $no_sudo -eq 0 ]; then
+    echo 'updating apt...'
+    $sudo apt-get update
 
-  echo 'upgrading system...'
-  $sudo apt-get -y upgrade && $sudo apt-get -y dist-upgrade
+    echo 'upgrading system...'
+    $sudo apt-get -y upgrade && $sudo apt-get -y dist-upgrade
 
-  echo 'installing zsh, curl, git, xz-utils, and stow...'
-  $sudo apt-get install -y zsh curl git xz-utils stow
+    echo 'installing zsh, curl, git, xz-utils, and stow...'
+    $sudo apt-get install -y zsh curl git xz-utils stow
+  fi
 
   echo 'setting shell to zsh...'
-  if [ $nopasswd = 1 ]; then
+  if [ $no_sudo -eq 0 ] && [ $nopasswd = 1 ]; then
     # use sudo since it will work and won't prompt for a password
     if [ $darwin = 1 ]; then
       $sudo chsh -s "$(command -v zsh)" -u "$(whoami)"
