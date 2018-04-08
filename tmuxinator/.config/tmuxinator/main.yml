@@ -46,5 +46,7 @@ windows:
   - general: "clear"
   - long: "clear"
   - code:
-    - cd ~/Code
+    - cd ~/Code || cd ~/code
     - clear
+  - irc:
+    - weechat
