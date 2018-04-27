@@ -22,3 +22,4 @@ else
 fi
 
 alias reset_title='printf "\e]0;$(hostname)\a"'
+alias integrity='openssl dgst -sha384 -binary | openssl enc -base64 -A'
