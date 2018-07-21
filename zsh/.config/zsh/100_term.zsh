@@ -2,11 +2,9 @@
 # TERM #
 ########
 
-# Basically, I give up. xterm-256color should work, in theory, but it just doesn't. In fact, it only
-# works in iTerm2 *out of* tmux. Inside tmux or via ssh, screen-256color is required. I don't even
-# care at this point. It's been hours. The TERM variable is unbelievable.
-if [[ $TMUX == "" && $(uname) == "Darwin" ]]; then
-  export TERM=xterm-256color
-else
+# The TERM variable is a disaster. Basically, unless we're in tmux, let it handle itself. If we're
+# in tmux, to facilitate a consistent environment, use screen-256color. tmux must also be made
+# aware of this term variable. (set -g default-terminal screen-256color)
+if [[ "$TMUX" != "" ]]; then
   export TERM=screen-256color
 fi
