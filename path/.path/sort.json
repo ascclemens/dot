@@ -2,12 +2,13 @@
   "rules": {
     "order": {
       "paths": [
-        {"exact": "/usr/local/bin"},
-        {"exact": "/usr/local/sbin"},
         {"contains": ".local"},
         {"contains": ".cargo"},
         {"contains": ".rvm"},
+        {"contains": ".pyenv"},
         {"default": true},
+        {"exact": "/usr/local/bin"},
+        {"exact": "/usr/local/sbin"},
         {"exact": "/bin"},
         {"exact": "/sbin"}
       ],
