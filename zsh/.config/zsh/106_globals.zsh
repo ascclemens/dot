@@ -10,7 +10,7 @@ else
 fi
 
 # set java home if on macOS
-[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=$(/usr/libexec/java_home)
+[[ -x /usr/libexec/java_home ]] && export JAVA_HOME=$(/usr/libexec/java_home 2>/dev/null)
 
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=$(tty)
