@@ -11,23 +11,27 @@ if [[ -e ~/.config/zsh/antigen.zsh ]]; then
   source ~/.config/zsh/antigen.zsh
 
   antigen use oh-my-zsh
-  antigen bundle rimraf/k
-  antigen bundle git
-  antigen bundle git-extras
   antigen bundle brew
   antigen bundle brew-cask
+  antigen bundle cargo
+  antigen bundle colored-man-pages
   antigen bundle colorize
-  antigen bundle jump
-  antigen bundle mvn
   antigen bundle cp
-  antigen bundle mosh
+  antigen bundle docker
+  antigen bundle docker-compose
+  antigen bundle git
+  antigen bundle git-extras
   antigen bundle httpie
+  antigen bundle iterm2
+  antigen bundle mosh
+  antigen bundle peterhurford/up.zsh
   antigen bundle pip
   antigen bundle python
-  antigen bundle tmuxinator
-  antigen bundle web-search
-  antigen bundle zsh-users/zsh-syntax-highlighting
-  antigen bundle peterhurford/up.zsh
+  antigen bundle rimraf/k
   antigen bundle rupa/z
+  antigen bundle rust
+  antigen bundle tmuxinator
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle zsh-users/zsh-syntax-highlighting
   antigen apply
 fi

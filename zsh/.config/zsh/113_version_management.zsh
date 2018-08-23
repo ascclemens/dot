@@ -7,6 +7,6 @@ if [[ -d ~/.pyenv ]]; then
   eval "$(pyenv init -)"
 fi
 
-[[ -x $(which jenv) ]] && eval "$(jenv init -)"
-[[ -x $(which rbenv) ]] && eval "$(rbenv init -)"
-[[ -x $(which thefuck) ]] && eval "$(thefuck --alias)"
+[[ -x $(command -v jenv) ]] && eval "$(jenv init -)"
+[[ -x $(command -v rbenv) ]] && eval "$(rbenv init -)"
+[[ -x $(command -v thefuck) ]] && eval "$(thefuck --alias)"

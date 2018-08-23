@@ -2,18 +2,18 @@
 # Aliases #
 ###########
 
-[[ -x $(which pmset) ]] && alias battery="pmset -g batt"
-[[ -x $(which numfmt) ]] && alias bytes="numfmt --to=iec-i --suffix=B"
-[[ -x $(which gnumfmt) ]] && alias bytes="gnumfmt --to=iec-i --suffix=B"
-[[ -x $(which hub) ]] && alias git=hub
-[[ -x $(which mpsyt) ]] && alias mpsyt='mpsyt; reset_title'
-[[ -x $(which tmuxinator) ]] && alias mux=tmuxinator
+[[ -x $(command -v pmset) ]] && alias battery="pmset -g batt"
+[[ -x $(command -v numfmt) ]] && alias bytes="numfmt --to=iec-i --suffix=B"
+[[ -x $(command -v gnumfmt) ]] && alias bytes="gnumfmt --to=iec-i --suffix=B"
+[[ -x $(command -v hub) ]] && alias git=hub
+[[ -x $(command -v mpsyt) ]] && alias mpsyt='mpsyt; reset_title'
+[[ -x $(command -v tmuxinator) ]] && alias mux=tmuxinator
 
-if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(which reattach-to-user-namespace) ]]; then
+if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(command -v reattach-to-user-namespace) ]]; then
   alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
 fi
 
-if [[ -x $(which exa) ]]; then
+if [[ -x $(command -v exa) ]]; then
   alias ls="exa"
   alias lsa="ls -a"
 else
