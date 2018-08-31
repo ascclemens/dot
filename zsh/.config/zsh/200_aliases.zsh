@@ -8,9 +8,16 @@
 [[ -x $(command -v hub) ]] && alias git=hub
 [[ -x $(command -v mpsyt) ]] && alias mpsyt='mpsyt; reset_title'
 [[ -x $(command -v tmuxinator) ]] && alias mux=tmuxinator
+[[ -x $(command -v prettyping) ]] && alias ping=prettyping
+[[ -x $(command -v diff-so-fancy) ]] && alias diff=diff-so-fancy
 
 if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(command -v reattach-to-user-namespace) ]]; then
   alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
+fi
+
+if [[ -x $(command -v bat) ]]; then
+  alias cat=bat
+  export BAT_THEME=TwoDark
 fi
 
 if [[ -x $(command -v exa) ]]; then
