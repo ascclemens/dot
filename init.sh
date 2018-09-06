@@ -62,8 +62,10 @@ __box_init() {
     chsh -s "$(command -v zsh)"
   fi
 
-  echo 'downloading dot files...'
-  git clone https://github.com/jkcclemens/dot.git ~/.dot
+  if [[ ! -d ~/.dot ]]; then
+    echo 'downloading dot files...'
+    git clone https://github.com/jkcclemens/dot.git ~/.dot
+  fi
 
   echo 'moving to tempdir...'
   local temp=''
