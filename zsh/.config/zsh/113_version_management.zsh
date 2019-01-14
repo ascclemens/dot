@@ -7,6 +7,14 @@ if [[ -d ~/.pyenv ]]; then
   eval "$(pyenv init -)"
 fi
 
+if [[ -d ~/.rbenv ]]; then
+  export PATH=$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init -)"
+fi
+
 [[ -x $(command -v jenv) ]] && eval "$(jenv init -)"
 [[ -x $(command -v rbenv) ]] && eval "$(rbenv init -)"
 [[ -x $(command -v thefuck) ]] && eval "$(thefuck --alias)"
+[[ -x $(command -v yarn) ]] && export PATH="$(yarn global bin):$PATH"
+
+[[ -x /home/linuxbrew/.linuxbrew/bin/brew ]] && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
