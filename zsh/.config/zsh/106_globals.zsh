@@ -3,7 +3,7 @@
 ###########
 
 # set editor based on host
-if [[ $(uname) == 'Darwin' ]]; then
+if [[ -x $(command -v code) ]]; then
   export EDITOR="code -wn"
 else
   export EDITOR=nano
