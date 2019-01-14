@@ -10,6 +10,9 @@
 [[ -x $(command -v tmuxinator) ]] && alias mux=tmuxinator
 [[ -x $(command -v prettyping) ]] && alias ping=prettyping
 [[ -x $(command -v diff-so-fancy) ]] && alias diff=diff-so-fancy
+[[ -x $(command -v xdg-open) ]] && alias open=xdg-open
+[[ -x $(command -v xclip) ]] && alias pbcopy="xclip -i -selection clipboard"
+[[ -x $(command -v tokei) ]] && alias cloc=tokei
 
 if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(command -v reattach-to-user-namespace) ]]; then
   alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
