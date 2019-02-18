@@ -48,5 +48,3 @@ windows:
   - code:
     - cd ~/Code || cd ~/code
     - clear
-  - irc:
-    - weechat
