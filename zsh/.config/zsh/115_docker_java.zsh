@@ -12,18 +12,18 @@ if [ ! -x "$(command -v java)" ]; then
       /bin/sh -c "cd \"$(pwd)\"; groupadd \"$USER\" -g \"$GID\"; useradd \"$USER\" -d \"$HOME\" -g \"$GID\" -u \"$UID\"; chown \"$USER:$USER\" \"$HOME\"; su \"$USER\" -c 'java $*'"
   }
 
-  xjava() {
-    local sudo='sudo'
-    for group in $(groups); do
-      [ "$group" = 'docker' ] && sudo=''
-    done
-    "$sudo" docker run \
-      --rm \
-      -it \
-      -v "$(pwd)":"$(pwd)" \
-      -v /tmp/.X11-unix:/tmp/.X11-unix \
-      -e DISPLAY="$DISPLAY" \
+  if [ -x "$(command -v x11docker)" ]; then
+    xjava() {
+      local agent_arg=''
+      [ -x "$(command -v nxagent)" ] && agent_arg='--nxagent'
+      [ -x "$(command -v xpra)" ] && agent_arg='--xpra'
+      x11docker \
+      "$agent_arg" \
+      -- \
+      --rm -v "$(pwd):$(pwd)" \
+      -- \
       openjdk:latest \
-      /bin/sh -c "cd \"$(pwd)\"; groupadd \"$USER\" -g \"$GID\"; useradd \"$USER\" -d \"$HOME\" -g \"$GID\" -u \"$UID\"; chown \"$USER:$USER\" \"$HOME\"; su \"$USER\" -c 'java $*'"
-  }
+      /bin/sh -c "cd \"$(pwd)\"; java $*"
+    }
+  fi
 fi
