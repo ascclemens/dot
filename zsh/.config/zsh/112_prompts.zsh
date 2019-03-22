@@ -2,9 +2,9 @@
 # Prompts #
 ###########
 
-if [[ -x ~/.prompt/prompt ]]; then
-  export PROMPT="$(~/.prompt/prompt PROMPT)"
-  export RPROMPT="$(~/.prompt/prompt RPROMPT)"
+if [[ -x $(which prompt) ]]; then
+  export PROMPT="$(prompt PROMPT)"
+  export RPROMPT="$(prompt RPROMPT)"
 fi
 
 function rust_prompt_info {

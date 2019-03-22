@@ -13,6 +13,7 @@
 [[ -x $(command -v xdg-open) ]] && alias open=xdg-open
 [[ -x $(command -v xclip) ]] && alias pbcopy="xclip -i -selection clipboard"
 [[ -x $(command -v tokei) ]] && alias cloc=tokei
+[[ -x $(command -v rg) ]] && [[ ! -x $(command -v ack) ]] && alias ack=rg
 
 if [[ -x /Applications/VLC.app/Contents/MacOS/VLC && -x $(command -v reattach-to-user-namespace) ]]; then
   alias vlc="reattach-to-user-namespace /Applications/VLC.app/Contents/MacOS/VLC"
