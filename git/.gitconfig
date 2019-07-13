@@ -11,3 +11,7 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[diff "gpg"]
+	textconv = gpg --no-tty --decrypt
+[color]
+	ui = auto

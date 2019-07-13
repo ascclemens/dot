@@ -2,6 +2,6 @@
 # Composer #
 ############
 
-if [[ -d ~/.composer/vendor/bin ]]; then
-  export PATH=$PATH:~/.composer/vendor/bin
+if [[ -d ~/.config/composer/vendor/bin ]]; then
+  export PATH=$PATH:~/.config/composer/vendor/bin
 fi

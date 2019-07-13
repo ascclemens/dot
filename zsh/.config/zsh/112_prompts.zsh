@@ -2,13 +2,13 @@
 # Prompts #
 ###########
 
-if [[ -x $(which prompt) ]]; then
+if [[ -x $(command -v prompt) ]]; then
   export PROMPT="$(prompt PROMPT)"
   export RPROMPT="$(prompt RPROMPT)"
 fi
 
 function rust_prompt_info {
-  if [[ (-e ./Cargo.toml || -e ./Cargo.lock) && -x $(which rustc) ]]; then
+  if [[ (-e ./Cargo.toml || -e ./Cargo.lock) && -x $(command -v rustc) ]]; then
     echo "$(rustc --version | cut -d ' ' -f 2) "
   fi
 }
@@ -26,7 +26,7 @@ function git_status {
 }
 
 function git_spark {
-  if [[ -x $(which git-freq) && -x $(which spark) && $(git status 2>/dev/null) != "" ]]; then
+  if [[ -x $(command -v git-freq) && -x $(command -v spark) && $(git status 2>/dev/null) != "" ]]; then
     echo " $(git freq $(date '+%Y-%m-%d') -7 | spark)"
   fi
 }
