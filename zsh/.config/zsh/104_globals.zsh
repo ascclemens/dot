@@ -14,5 +14,3 @@ fi
 
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=$(tty)
-
-[[ -x $(command -v sccache) ]] && export RUSTC_WRAPPER=sccache

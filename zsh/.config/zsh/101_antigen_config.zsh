@@ -11,8 +11,6 @@ if [[ -e ~/.config/zsh/antigen.zsh ]]; then
   source ~/.config/zsh/antigen.zsh
 
   antigen use oh-my-zsh
-  antigen bundle brew
-  antigen bundle brew-cask
   antigen bundle cargo
   antigen bundle colored-man-pages
   antigen bundle colorize
@@ -22,7 +20,6 @@ if [[ -e ~/.config/zsh/antigen.zsh ]]; then
   antigen bundle git
   antigen bundle git-extras
   antigen bundle httpie
-  antigen bundle iterm2
   antigen bundle mosh
   antigen bundle peterhurford/up.zsh
   antigen bundle pip
