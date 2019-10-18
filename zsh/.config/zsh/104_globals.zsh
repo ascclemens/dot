@@ -14,3 +14,6 @@ fi
 
 export MONO_GAC_PREFIX="/usr/local"
 export GPG_TTY=$(tty)
+
+# auto title will echo the command name after each command because it's buggy
+export DISABLE_AUTO_TITLE="true"
