@@ -7,6 +7,6 @@ if [[ "$TERM" = "dumb" ]]; then
   PS1="> "
 else
   for f in ~/.config/zsh/*.zsh; do
-    source $f
+    source "$f"
   done
 fi
