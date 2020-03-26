@@ -6,7 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(lsp-mode rustic sql-indent web-mode dockerfile-mode yaml-mode flycheck base16-theme move-text ## company-quickhelp aggressive-indent smartparens mwim rainbow-delimiters anzu magit-lfs highlight-indent-guides magit ace-window atom-one-dark-theme company neotree))
+   '(nhexl-mode lsp-mode rustic sql-indent web-mode dockerfile-mode yaml-mode flycheck base16-theme move-text ## company-quickhelp aggressive-indent smartparens mwim rainbow-delimiters anzu magit-lfs highlight-indent-guides magit ace-window atom-one-dark-theme company neotree))
  '(require-final-newline t)
  '(safe-local-variable-values '((engine . jinja)))
  '(sp-highlight-pair-overlay nil))
@@ -44,6 +44,8 @@
 (defvaralias 'custom-tab-width 'tab-width)
 (defvaralias 'rustic-indent-offset 'tab-width)
 (defvaralias 'css-indent-offset 'tab-width)
+(setq-default sh-basic-offset 2)
+(setq-default sh-indentation 2)
 
 ;; show matching parens
 (show-paren-mode 1)
