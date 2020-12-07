@@ -4,9 +4,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(auth-source-save-behavior nil)
  '(inhibit-startup-screen t)
  '(package-selected-packages
-   '(nhexl-mode lsp-mode rustic sql-indent web-mode dockerfile-mode yaml-mode flycheck base16-theme move-text ## company-quickhelp aggressive-indent smartparens mwim rainbow-delimiters anzu magit-lfs highlight-indent-guides magit ace-window atom-one-dark-theme company neotree))
+   '(flycheck-gradle gradle-mode flycheck-kotlin kotlin-mode csharp-mode csproj-mode ws-butler haml-mode nhexl-mode lsp-mode rustic sql-indent web-mode dockerfile-mode yaml-mode flycheck base16-theme move-text ## company-quickhelp aggressive-indent smartparens mwim rainbow-delimiters anzu magit-lfs highlight-indent-guides magit ace-window atom-one-dark-theme company neotree))
  '(require-final-newline t)
  '(safe-local-variable-values '((engine . jinja)))
  '(sp-highlight-pair-overlay nil))
@@ -30,13 +31,20 @@
 ;; (load-theme 'base16-tomorrow-night t)
 
 ;; set font for gui emacs
-(set-frame-font "Fira Code-12" nil t)
+;; (add-to-list 'default-frame-alist '(font .  "Monospace-12" ))
+;; (set-face-attribute 'default t :font  "Monospace-12" )
+
+;; (set-frame-font "Fira Code-12" nil t)
 
 ;; flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
 ;; remove trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(ws-butler-global-mode 1)
+
+;; handle indenting not working with haml-mode for some reason
+(with-eval-after-load 'haml-mode
+  (define-key haml-mode-map (kbd "RET") 'newline-and-indent))
 
 ;; use spaces for tabs
 (setq-default indent-tabs-mode nil)
@@ -133,6 +141,9 @@
 
 ;; aggressively indent code
 (global-aggressive-indent-mode 1)
+
+;; no aggressive indent for haml
+(add-to-list 'aggressive-indent-excluded-modes 'haml-mode)
 
 ;; turn on line numbers but not for term or neotree
 (global-display-line-numbers-mode 1)
