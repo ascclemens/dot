@@ -15,3 +15,5 @@
 	textconv = gpg --no-tty --decrypt
 [color]
 	ui = auto
+[pull]
+	rebase = false
