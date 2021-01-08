@@ -6,7 +6,8 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(inhibit-startup-screen t)
- '(package-selected-packages '(use-package))
+ '(package-selected-packages
+   '(rustic flycheck-gradle gradle-mode flycheck-kotlin kotlin-mode flycheck highlight-indent-guides ace-window anzu rainbow-delimiters move-text mwim smartparens aggressive-indent company-quickhelp company magit-lfs magit neotree csproj-mode csharp-mode ws-butler haml-mode nhexl-mode lsp-mode sql-indent web-mode dockerfile-mode yaml-mode atom-one-dark-theme))
  '(require-final-newline t)
  '(safe-local-variable-values '((engine . jinja)))
  '(sp-highlight-pair-overlay nil))
@@ -20,6 +21,7 @@
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (add-to-list 'load-path "~/.config/emacs/use-package")
   (require 'use-package))
 
 (use-package atom-one-dark-theme

@@ -1,0 +1,3 @@
+[submodule "emacs/.config/emacs/use-package"]
+	path = emacs/.config/emacs/use-package
+	url = https://github.com/jwiegley/use-package
