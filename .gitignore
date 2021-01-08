@@ -1,2 +1,5 @@
 *.zwc
 zsh/.config/zsh/antigen.zsh
+emacs/.config/emacs/elpa/
+emacs/.config/emacs/transient/
+emacs/.config/emacs/auto-save-list/
