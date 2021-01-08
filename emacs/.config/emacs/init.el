@@ -6,8 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(auth-source-save-behavior nil)
  '(inhibit-startup-screen t)
- '(package-selected-packages
-   '(flycheck-gradle gradle-mode flycheck-kotlin kotlin-mode csharp-mode csproj-mode ws-butler haml-mode nhexl-mode lsp-mode rustic sql-indent web-mode dockerfile-mode yaml-mode flycheck base16-theme move-text ## company-quickhelp aggressive-indent smartparens mwim rainbow-delimiters anzu magit-lfs highlight-indent-guides magit ace-window atom-one-dark-theme company neotree))
+ '(package-selected-packages '(use-package))
  '(require-final-newline t)
  '(safe-local-variable-values '((engine . jinja)))
  '(sp-highlight-pair-overlay nil))
@@ -18,12 +17,116 @@
              '("melpa" . "http://melpa.org/packages/"))
 (package-initialize)
 
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  ;; Following line is not needed if use-package.el is in ~/.emacs.d
+  (require 'use-package))
+
+(use-package atom-one-dark-theme
+  :ensure t)
+
+(use-package yaml-mode
+  :ensure t)
+
+(use-package dockerfile-mode
+  :ensure t)
+
+(use-package web-mode
+  :ensure t)
+
+(use-package sql-indent
+  :ensure t)
+
+(use-package lsp-mode
+  :ensure t)
+
+(use-package nhexl-mode
+  :ensure t)
+
+(use-package haml-mode
+  :ensure t)
+
+(use-package ws-butler
+  :ensure t
+  :config
+  ;; remove trailing whitespace
+  (ws-butler-global-mode 1))
+
+(use-package csharp-mode
+  :ensure t)
+
+(use-package csproj-mode
+  :ensure t)
+
+(use-package neotree
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+
+(use-package magit-lfs
+  :requires magit
+  :ensure t)
+
+(use-package company
+  :ensure t)
+
+(use-package company-quickhelp
+  :requires company
+  :ensure t)
+
+(use-package aggressive-indent
+  :ensure t)
+
+(use-package smartparens
+  :ensure t)
+
+(use-package mwim
+  :ensure t)
+
+(use-package move-text
+  :ensure t)
+
+(use-package rainbow-delimiters
+  :ensure t)
+
+(use-package anzu
+  :ensure t)
+
+(use-package ace-window
+  :ensure t
+  ;; rebind M-o to ace-window
+  :bind ("M-o" . 'ace-window))
+
+(use-package highlight-indent-guides
+  :ensure t)
+
+(use-package flycheck
+  :ensure t)
+
+(use-package kotlin-mode
+  :ensure t)
+
+(use-package flycheck-kotlin
+  :requires (flycheck kotlin-mode)
+  :ensure t)
+
+(use-package gradle-mode
+  :ensure t)
+
+(use-package flycheck-gradle
+  :requires (flycheck gradle-mode)
+  :ensure t)
+
+(use-package rustic
+  :ensure t
+  :init
+  (setq rustic-lsp-server 'rust-analyzer))
+
 ;; set kill-whole-line to C-c k
 (global-set-key (kbd "C-c k") 'kill-whole-line)
 ;; set neotree to f8
 (global-set-key [f8] 'neotree-toggle)
-;; rebind M-o to ace-window
-(global-set-key (kbd "M-o") 'ace-window)
 
 ;; load atom one dark theme
 (load-theme 'atom-one-dark t)
@@ -39,9 +142,6 @@
 ;; flycheck
 (add-hook 'after-init-hook 'global-flycheck-mode)
 
-;; remove trailing whitespace
-(ws-butler-global-mode 1)
-
 ;; handle indenting not working with haml-mode for some reason
 (with-eval-after-load 'haml-mode
   (define-key haml-mode-map (kbd "RET") 'newline-and-indent))
@@ -49,8 +149,12 @@
 ;; use spaces for tabs
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
+(defvar custom-tab-width)
+(setq custom-tab-width tab-width)
 (defvaralias 'custom-tab-width 'tab-width)
+(setq rustic-indent-offset tab-width)
 (defvaralias 'rustic-indent-offset 'tab-width)
+(setq css-indent-offset tab-width)
 (defvaralias 'css-indent-offset 'tab-width)
 (setq-default sh-basic-offset 2)
 (setq-default sh-indentation 2)
@@ -150,22 +254,10 @@
 (add-hook 'neo-after-create-hook (lambda(&rest _) (display-line-numbers-mode -1)))
 (add-hook 'term-mode-hook (lambda() (display-line-numbers-mode -1)))
 
-;; enable rust
-;; (require 'rust-mode)
-;; (add-hook 'rust-mode-hook 'cargo-minor-mode)
-;; (add-hook 'rust-mode-hook 'racer-mode)
-;; (add-hook 'racer-mode-hook 'eldoc-mode)
-;; (add-hook 'racer-mode-hook 'company-mode)
-;; (add-hook 'racer-mode-hook 'company-quickhelp-mode)
-;; (with-eval-after-load 'rust-mode
-;;   (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
-;; (define-key rust-mode-map (kbd "TAB") 'company-indent-or-complete-common)
-;; (setq company-tooltip-align-annotations 1)
-
 (require 'flycheck)
 (require 'rustic)
 (require 'smartparens-rust)
-(setq rustic-lsp-server 'rust-analyzer)
+;;(setq rustic-lsp-server 'rust-analyzer)
 (add-hook 'rustic-mode-hook #'lsp)
 (sp-with-modes 'rustic-mode
   (sp-local-pair "'" "'"
