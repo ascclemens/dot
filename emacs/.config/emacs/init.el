@@ -28,25 +28,56 @@
   :ensure t)
 
 (use-package yaml-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package dockerfile-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package web-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package sql-indent
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package lsp-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package nhexl-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package haml-mode
-  :ensure t)
+  :ensure t
+  :defer t)
+
+(use-package hledger-mode
+  :ensure t
+  :defer t
+  :mode "\\.journal\\'")
+
+(use-package toc-org
+  :ensure t
+  :defer t
+  :hook (org-mode . toc-org-mode))
+
+(use-package org-roam
+  :ensure t
+  :hook
+  (after-init . org-roam-mode)
+  :custom
+  (org-roam-directory "~/sync-nc/kb/")
+  :bind (:map org-roam-mode-map
+              (("C-c n l" . org-roam)
+               ("C-c n f" . org-roam-find-file)
+               ("C-c n g" . org-roam-graph))
+              :map org-mode-map
+              (("C-c n i" . org-roam-insert))
+              (("C-c n I" . org-roam-insert-immediate))))
 
 (use-package ws-butler
   :ensure t
@@ -54,11 +85,18 @@
   ;; remove trailing whitespace
   (ws-butler-global-mode 1))
 
+(use-package xclip
+  :ensure t
+  :config
+  (xclip-mode 1))
+
 (use-package csharp-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package csproj-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package neotree
   :ensure t)
@@ -107,23 +145,40 @@
   :ensure t)
 
 (use-package kotlin-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package flycheck-kotlin
   :requires (flycheck kotlin-mode)
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package gradle-mode
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package flycheck-gradle
   :requires (flycheck gradle-mode)
-  :ensure t)
+  :ensure t
+  :defer t)
 
 (use-package rustic
   :ensure t
+  :defer t
   :init
   (setq rustic-lsp-server 'rust-analyzer))
+
+(use-package password-store
+  :ensure t
+  :defer t)
+
+(use-package pass
+  :ensure t
+  :defer t)
+
+;; set scratch
+(setq initial-major-mode 'text-mode)
+(setq initial-scratch-message "")
 
 ;; set kill-whole-line to C-c k
 (global-set-key (kbd "C-c k") 'kill-whole-line)
@@ -158,6 +213,8 @@
 (defvaralias 'rustic-indent-offset 'tab-width)
 (setq css-indent-offset tab-width)
 (defvaralias 'css-indent-offset 'tab-width)
+(defvar python-indent-offset)
+(setq python-indent-offset 2)
 (setq-default sh-basic-offset 2)
 (setq-default sh-indentation 2)
 
