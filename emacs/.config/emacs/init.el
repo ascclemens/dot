@@ -85,6 +85,11 @@
   ;; remove trailing whitespace
   (ws-butler-global-mode 1))
 
+(use-package dtrt-indent
+  :ensure t
+  :config
+  (dtrt-indent-global-mode 1))
+
 (use-package xclip
   :ensure t
   :config
